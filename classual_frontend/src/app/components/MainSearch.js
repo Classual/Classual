@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useEffect, useState } from "react";
 import styles from '../page.module.css';
 import searchIcon from '../../../public/searchIcon.png'
-
+import mainLogo from '../../../public/Logo.png'
 
 function MainSearch() {
     const [searchCourse, setSearchCourse] = useState('');
@@ -18,9 +18,17 @@ function MainSearch() {
 
     return (
         <div className={styles.topContainer}>
+            <div className = {styles.logo}> 
+                <Image 
+                    src={mainLogo} 
+                    alt="Search Button"
+                    width={100}
+                    height={100}  
+                />
+            </div>
 
             <div className={styles.titleTxt}>
-                UCSD Classual (Class + Visual)
+                UCSD Classual
             </div>
 
             <div className={styles.searchContainer}>
