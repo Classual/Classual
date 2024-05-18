@@ -6,6 +6,7 @@ import parseCSV from '../lib/processCSV';
 
 function App({ course }) {
   const [data, setData] = useState([]);
+  const decodeCourse = decodeURIComponent(course);
   const [visibleLines, setVisibleLines] = useState({
     enrolledNumber: true,
     waitlistNumber: true,
@@ -133,15 +134,15 @@ function App({ course }) {
       .attr('text-anchor', 'middle')
       .style('font-size', '18px')
       .style('font-weight', 'bold')
-      .text('Course Enrollment Status');
+      .text(decodeCourse);
 
     // Source
     svg.append('text')
       .attr('x', width + margin.left)
-      .attr('y', height + margin.top + margin.bottom / 2)
+      .attr('y', height + margin.top + margin.bottom)
       .attr('text-anchor', 'end')
       .style('font-size', '10px')
-      .text('Source: Your Source');
+      .text('Date and Time');
 
     // Legend
     const legend = d3.select(legendRef.current);
