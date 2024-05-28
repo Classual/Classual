@@ -24,11 +24,11 @@ export default function MainSearch({ courses }) {
   return (
     <div className={styles.topContainer}>
       <div className={styles.logo}>
-        <Image src={mainLogo} alt="Search Button" width={100} height={100} />
+        <Image src={mainLogo} alt="Search Button" width={400} height={100} />
       </div>
 
       <div className={styles.backgroundImage}>
-        <Image src={Geisel} alt="Geisel Library" Width={705} height={310} />
+        <Image src={Geisel} alt="Geisel Library" Width={710} height={305} />
       </div>
 
       <div className={styles.titleTxt}>UCSD Classual</div>
@@ -36,7 +36,7 @@ export default function MainSearch({ courses }) {
       <div className={styles.BoyandGirl}>
         <Image src={Boy} alt="Boy Image" width={50} height={50} />
 
-        <div></div>
+        <div className={styles.spaceBetween}></div>
 
         <Image src={Girl} alt="Girl Image" width={40} height={50} />
       </div>
