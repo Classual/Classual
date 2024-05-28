@@ -27,6 +27,7 @@ function CoursesByMajor() {
             const textData = await res.text();
             const parsedText = parseCourses(textData);
             setMajors(parsedText);
+            console.log("ParsedTEXT!!", parsedText);
         } catch (error) {
             console.error("Failed to fetch courses:", error);
         }
@@ -70,11 +71,15 @@ function CoursesByMajor() {
                         </div>
 
                         {isOpen[major] && (
-                            <div>
+                            <div className={styles.flexRow}>
                                 {courses.map((course) => (
-                                    <Link key={course} href={`/${course}`} className={styles.classText}>
-                                        {course}
-                                    </Link>
+                                    <ul>
+                                        <li>
+                                            <Link key={course} href={`/${course}`} className={styles.classText}>
+                                                {course}
+                                            </Link>
+                                        </li>
+                                    </ul>
                                 ))}
                             </div>
                         )}

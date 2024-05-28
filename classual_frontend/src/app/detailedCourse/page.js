@@ -2,33 +2,41 @@
 
 import { useEffect, useState } from 'react';
 // import fetchExampleCSV from '../lib/fetched_process';
-import fetchCsv from '../lib/fetched_process';
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import styles from "./page.module.css";
 import Image from 'next/image';
 import logo from "../../../public/Logo.png";
 
+import * as d3 from 'd3';
+import parseCSV from '../lib/processCSV';
 
-
-
-function DetailedCourse() {
+function DetailedCourse({ course }) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        if (course) {
+            fetchAndProcess(course);
+        }
+    }, [course]);
 
-    async function fetchData() {
+    async function fetchAndProcess(course) {
         try {
-            const formattedData = await fetchCsv();
-            setData(formattedData); // Set the parsed data
-            console.log("data length:", formattedData.length);
+            const res = await fetch(`/api/fetchCSV?course=${course}`);
+            const csv = await res.text();
+            const formattedData = parseCSV(csv, course);
+            console.log('Formatted Data:', formattedData);
+            setData(formattedData);
         } catch (error) {
             console.error("Failed to fetch and parse CSV data:", error);
         }
     }
 
+    useEffect(() => {
+        if (data.length > 0) {
+            drawChart();
+        }
+    }, [data]);
     return (
         <>
         <div className = {styles.logoContainer}>
@@ -58,6 +66,7 @@ function DetailedCourse() {
         <div>
             <h1 className = {styles.course_number}>DSC 140A</h1>
             <h2 className = {styles.course_name}>Data Science (DS25)</h2>
+            <hr class="styled-hr" />
             <h3 className = {styles.description}>
                 The course covers learning and using probabilistic models for knowledge representation and decision-making. Topics covered include graphical models, temporal models, and online learning, as well as applications to natural language processing, adversarial learning, computational biology, and robotics. Prior completion of MATH 181A is strongly recommended.</h3>
             <hr class="styled-hr" />

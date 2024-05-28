@@ -12,18 +12,32 @@
   left: 5%;
 }
 
+.backgroundImage {
+  position: absolute;
+  z-index: -1; 
+}
+
+.BoyandGirl {
+    display: flex; 
+    flex-direction: row;
+
+}
+
 .topContainer {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center;
   padding: 4rem;
 }
 
 .titleTxt {
   font-size: 4rem;
   font-weight: 'bolder';
+  color: #87CEEB;
   text-align: center;
   font-family: "jua";
+  text-shadow: 2px 2px 8px rgba( 0,0,0,0.6);
+  margin-top: 90px;
 }
 
 .searchContainer {
@@ -33,8 +47,9 @@
   flex-direction: row;
   justify-content: space-between;
   height: 3rem;
+  width: 60rem;
   padding: 1rem;
-  margin: 3rem -10rem;
+  margin: 3rem auto;
 }
 
 .searchInput {
@@ -54,20 +69,24 @@
 }
 
 .coursesMajorContainer {
-  width: 80%;
+  width: 1000px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
-  border: 2px solid;
+  border: 3px solid;
   border-radius: 10px;
 }
+
 
 .bottomIndicatorText {
   font-size: 2rem;
   font-weight: bolder;
-  margin: 1rem;
+  margin: 2rem;
   font-family: "raleway";
+  /* background-color: blue;
+  border-radius: 50%; */
+  text-align: center;
 }
 
 .majorAndClassContainer {
@@ -90,4 +109,17 @@
   font-size: 1rem;
   margin: 1rem;
   cursor: pointer;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+.gapBetween {
+  margin: 1rem;
 }
